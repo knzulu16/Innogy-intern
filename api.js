@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var app = express();
 var JsonParser = require("body-parser");
 var plumber = require("./models");
-var mongodb = require('mongodb');
+var ObjectId= require('mongodb').ObjectId;
 
 app.use(express.static(__dirname + '/public'));
 
@@ -23,24 +23,14 @@ app.use(logger("dev"));
 
 
 app.post("/api/plumbers/slots/:slot/days/:day", function(req, res,next) {
-  console.log(req.body);
-// var slot=req.params.slot;
-var plumberName=req.body;
-var username=req.params.username;
-var slot=req.params.slot;
-var days=req.params.days;
-var objectDays={};
-if(!Array.isArray(days)){
-  days=[days];
-}
-days.forEach(function(day){
-  objectDays[day]=true;
-})
-console.log("@@@@",days);
-plumber.findOneAndUpdate({
 
-  Slots:plumberName.slot,
-  days:plumberName.day
+var slot=req.params.slots;
+var days=req.params.days;
+console.log("@@@@",days);
+plumber.find({
+
+  Slots:slot,
+  days:days
 },function(err,results){
   console.log(results);
 if(err){
@@ -48,8 +38,8 @@ if(err){
 }
 else{
   res.json({
-    Slots:results,
-    days:results
+    status:"success",
+    reslt:results
   })
 }
 })
@@ -58,25 +48,24 @@ else{
 
 
 
-app.get("/api/plumbers/:id/bookings", function(req, res) {
+app.get("/api/plumbers/:id", function(req, res) {
   var id =req.params.id;
   console.log(id);
-  plumber.findOneAndUpdate({
-   _id:Object(id)
- },{
-   $inc:{
-     username:-1
-   },},{
-     upsert:false,
-     new:true
-   },function(err,reslt){
+  plumber.findOne({
+   _id:ObjectId(id)
+ },function(err,reslt){
      if(err){
-       console.log(reslt);
-       return err;
+
+       return res.json({
+         status:"error",
+         error:err,
+         results:[]
+       })
      }
      else{
        res.json({
-         data:results
+         results:reslt,
+         status:"success"
        })
      }
    })
@@ -84,30 +73,50 @@ app.get("/api/plumbers/:id/bookings", function(req, res) {
 
 
  app.post("/api/plumbers", function(req, res) {
-   console.log(req.body);
+   var username = req.body.username;
+   var email = req.body.email;
+   var contact_Number =req.body.contact_Number;
+   var days=req.body.days;
+   var Slots=req.body.Slots;
    plumber.create({
-     username:req.body.username,
-     email:req.body.email,
-     contact_Number: Number(req.body.contact_Number),
-     days:req.body.days,
-     Slots:req.body.Slots
+     username:username,
+     email:email,
+     contact_Number:contact_Number,
+     days:days,
+     Slots:Slots
    },function(err,results){
      if(err)  {
        console.log(err);
      }
-
-
-     plumber.findOne({
-
-     },function(err,results){
-       if(err) {
-         res.json({err})
-       } else {
+        else {
          res.json({results});
        }
-     });
-   });
+
  });
+ })
+
+
+
+ app.get("/api/plumbers", function(req, res) {
+
+   plumber.find({
+},function(err,data){
+     if(err)  {
+       console.log(err);
+     }
+        else {
+         res.json({data});
+       }
+
+ });
+ })
+
+
+
+
+
+
+
 var port = process.env.PORT || 3005;
 app.listen(port, function() {
   console.log("Express server is listening on port", port);

@@ -21,7 +21,7 @@ var archive=mongoose.model('archive',{
   email:String,
   contact_Number:Number,
   days:Object,
-  Slots:String
+  Slots:Object
 
 
 });

@@ -14,140 +14,173 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/solar/bootstrap.min.css" rel="stylesheet" integrity="sha384-GC77SCz5O11gVtXl0sSfbQYEWSSznn1wPDHgL1BGUTFU9iEoUrG4IOJa5CBVY8kR" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="handlebars-v4.0.5.js"></script>
+  <script type="text/javascript" src="handlebars-v4.0.5.js"></script>
   <title></title>
   <h1 align="center">Plumber availability webapp<h1>
   </head>
   <body>
+
+
     <div class="row" >
-      <div class="col-sm-4">
-           <div align="top">
-         <button id="modalButton"  type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">
-          Register Plumber
-         </button>
-       </div>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                     </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="tab-pane fade in active" id="addPlumber">
-                        <div id="addPlumber">
-                          <form class="form-group">
-                            <!-- <div class="col"> -->
+     <div class="col-sm-4">
+          <div align="top">
+        <button id="modalButton"  type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">
+         Register Plumber
+        </button>
+      </div>
+             <!-- Modal -->
+             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                   <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                   </div>
+                   <div class="modal-body">
+                     <div class="tab-pane fade in active" id="addPlumber">
+                       <div id="addPlumber">
+                         <form class="form-group">
+                           <!-- <div class="col"> -->
 
 
-                            <div class="form-group">
-                              <label class="control-label" for="focusedInput">Add Name:</label>
-                              <input class="form-control" id="username" type="text" type="text" required placeholder="Enter your name">
-                            </div>
+                           <div class="form-group">
+                             Add Name:
+                             <input class="form-control" width="50" id="username" type="text" type="text" required placeholder="Enter your name">
+                           </div>
 
-                            <label>Add Email:</label>
+                           Add Email:
 
-                            <input type="email" id="email" required placeholder="Enter your email address " class="form-control">
+                           <input type="email" id="email" required placeholder="Enter your email address " class="form-control">
 
-                            <label>Contacts:</label>
+                           Contacts:
 
-                            <input type="number" id="cellNum" required placeholder="Enter your cell number" class="form-control">
+                           <input type="number" id="cellNum" required placeholder="Enter your cell number" class="form-control">
 
 
-                            <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                        <!-- </div> -->
 
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                        </form>
+                       </div>
+                   <!-- designing cards for days -->
+                                      <div class="row">
+                                        <div class="col-sm-4">
+                                     <div id="checkBboxes" class="card" style="width:30rem;">
+                                     <ul class="list-group list-group-flush">
+
+                                    <li class="list-group-item"> <input class="day" type="checkbox" id="monday" name="Monday" value="Monday">Monday
+
+                                    </li>
+
+                                    <li class="list-group-item"><input class="day" type="checkbox" id="tuesday" name="Tuesday" value="Tuesday">Tuesday
+
+                                    </li>
+
+                                    <li class="list-group-item"><input class="day" type="checkbox" id="wednesday" name="Wednesday" value="Wednesday">Wednesday
+
+                                    </li>
+
+                                    <li class="list-group-item"><input class="day" type="checkbox" id="thursday" name="Thursday" value="Thurday">Thursday
+
+                                    </li>
+                                    <li class="list-group-item"><input class="day" id="friday" type="checkbox" name="Friday" value="Friday">Friday
+
+                                    </li>
+                                    <li class="list-group-item"><input class="day" id="saturday" type="checkbox" name="Saturday" value="Saturday">Saturday
+
+                                    </li>
+                                    <li class="list-group-item"><input id="sunday" class="day" type="checkbox" name="Sunday" value="Sunday">Sunday
+                                    </li>
+                                    <div id="checkboxes" class="row">
+                                      <div class="col-sm-8">
+                                      <label for="one">
+                                        <input type="radio" class="slot" value="Morning"/>Morning</label>
+                                      </div>
+                                      <div class="col-sm-8">
+
+                                        <label for="two">
+                                          <input type="radio" class="slot" value="Midday" />Midday</label>
+                                        </div>
+                                        <div class="col-sm-8">
+
+                                          <label for="three">
+
+                                            <input type="radio" class="slot" value="Afternoon" />Afternoon</label>
+                                          </div>
+                                        </div>
+                                    </ul>
+                                    <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                                     </div>
+                                   </div>
+                                 </div>
+                       <!-- </div> -->
+
+                       <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                       </form>
+                     </div>
+                     </div>
+                   </div>
+
+                 </div>
+               </div>
+             </div>
+           </div>
+
+
+                  <!-- displaying the table with handlebars -->
+                  <script id="Tabletemplate" type="text/x-handlebars-template">
+
+
+                    <div class="col-sm-4">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-list-search" style="word-wrap: break-word; min-width: 10px; max-width: 20px">
+                          <tr>
+                            <th class="active">Names</th>
+                            <th class="active">Contacts</th>
+                            <th class="active">Email</th>
+                            <th class="active">Days</th>
+                            <th class="active">Slots</th>
+                            <th class="active">Book</th>
+
+
+
+                          </tr>
+                          {{#each detail}}
+                          <tr>
+                            <td class="active">{{username}}</td>
+                            <td class="active">{{contact_Number}}</td>
+                            <td class="active">{{email}}</td>
+                            <td class="active">{{days}}</td>
+                          <td class="active">{{Slots}}</td>
+                          <td class="active">{{Book}}
+                            <button value={{_id}} onclick='bookPlumber("{{_id}}", "{{Book}}")' id="bookPlumber" class="btn btn-primary">
+                            <a><span class="icon-ticket"> <i class="icon-shopping-cart icon-large"></i> Checkout</a></span>
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </table>
                       </div>
-                      </div>
-                    </div>
-
                   </div>
+                  </script>
+
+
+
+                <div id="tableDisplay">
                 </div>
-              </div>
-            </div>
-<!-- designing cards for days -->
-                    
-                  <div id="checkBboxes" class="card" style="width: 30rem;">
-                  <ul class="list-group list-group-flush">
-                 <li class="list-group-item"> <input type="checkbox" id="monday" name="Monday" value="">Monday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="radio" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="radio" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="radio" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 <li class="list-group-item"><input type="radio" id="tuesday" name="Tuesday" value="">Tuesday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="checkbox" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="checkbox" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="checkbox" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 <li class="list-group-item"><input type="checkbox" id="wednesday" name="Wednesday" value="">Wednesday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="radio" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="radio" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="radio" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 <li class="list-group-item"><input type="checkbox" id="thursday" name="Thursday" value="">Thursday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="radio" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="radio" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="radio" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 <li class="list-group-item"><input id="friday" type="checkbox" name="Friday" value="">Friday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="radio" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="radio" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="radio" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 <li class="list-group-item"><input id="saturday" type="checkbox" name="Saturday" value="">Saturday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="radio" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="radio" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="radio" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 <li class="list-group-item"><input id="sunday" type="checkbox" name="Sunday" value="">Sunday
-                   <div id="checkboxes">
-                         <label for="one">
-                           <input type="radio" id="one" />Morning</label>
-                         <label for="two">
-                           <input type="radio" id="two" />Midday</label>
-                         <label for="three">
-                           <input type="radio" id="three" />Afternoon</label>
-                       </div>
-                 </li>
-                 </ul>
-                 <button id="CheckBtn" type="submit" class="btn btn-primary">Submit</button>
-                  </div>
+
+
+                <!-- Starts here -->
+
+
+
+
+
+
+
+
+
+
+                <!-- ends here -->
+
 
 
   </body>

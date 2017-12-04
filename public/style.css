@@ -1,0 +1,31 @@
+.form-control {
+  width: 50%;
+}
+.table-responsive{
+  width:30em;
+}
+
+
+.table{
+  /*width: %;*/
+  bottom: 30%;
+  font-size: 16px;
+  /*text-align: center;
+    width: 2em;
+    margin: 0 auto;
+    border-color: red;*/
+color:white;
+
+},
+th, td {
+    padding: 5px;
+    border: 1px solid;
+}
+
+
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 2px 0 0 2px;
+}
